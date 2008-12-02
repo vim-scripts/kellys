@@ -1,43 +1,58 @@
-" description:	color scheme based on kellys bicycles
-"      author:	kamil.stachowski@gmail.com
-"     license:	gpl 3+
-"     version:	0.1 (2008.11.28)
+" Description:	a colour scheme inspired by kellys bicycles
+"  Maintainer:	kamil.stachowski@gmail.com
+"     License:	gpl 3+
+"     Version:	0.2 (2008.12.02)
 
 " changelog:
+"         0.2:	2008.12.02
+"				added support for 256-colour terminal
+"				added diff*, pmenu* and wildmenu
+"				added some cpp, java*, python*, some sh and ruby*
+"				removed italic from comments and made them slightly lighter
 "         0.1:	2008.11.28
 "       		initial version
 
 
 set background=dark
 
-hi clear
-if exists("syntax_on")
-	syntax reset
+if version > 580
+	hi clear
+	if exists("syntax_on")
+		syntax reset
+	endif
 endif
 
 let colors_name = "kellys"
 
-" blue			e6ac32
-" blue slight	9ab2c8
-" green			e1e338
-" grey dark		555657
-" grey light	e1e0e5
-" green slight	d1c79e
-" orange		62acce
-" red			9de015
+" black			2a2b2f	235
+" blue			62acce	81
+" blue slight	9ab2c8	74
+" brown slight	d1c79e	144
+" green	yellowy	e1e338	184
+" grey dark		67686b	240
+" grey light	e1e0e5	254
+" orange		e6ac32	178
+" red			9d0e15	124
 
-" diff*
-" pmenu
+" tabline
 
-hi Comment		guifg=#555657	guibg=#2a2b2f	gui=italic
+hi Comment		guifg=#67686b	guibg=#2a2b2f	gui=none
 hi Cursor 		guifg=#2a2b2f	guibg=#e1e0e5	gui=none
 hi Constant 	guifg=#d1c79e	guibg=#2a2b2f	gui=none
 hi CursorLine		          	guibg=#303132	gui=none
-hi Folded 		guibg=#555657	guifg=#2a2b2f	gui=none
-hi MatchParen	guibg=#2a2b2f	guifg=#e1e338	gui=bold,underline
+hi DiffAdd		guifg=#2a2b2f	guibg=#9ab2c8	gui=none
+hi DiffChange	guifg=#2a2b2f	guibg=#d1c79e	gui=none
+hi DiffDelete	guifg=#67686b	guibg=#2a2b2f	gui=none
+hi DiffText		guifg=#9d0e15	guibg=#d1c79e	gui=none
+hi Folded 		guifg=#2a2b2f	guibg=#67686b	gui=none
+hi MatchParen	guifg=#e1e338	guibg=#2a2b2f	gui=bold,underline
 hi ModeMsg		guifg=#e1e0e5	guibg=#2a2b2f	gui=bold
 hi Normal 		guifg=#e1e0e5	guibg=#2a2b2f	gui=none
-hi PreProc		guifg=#e1e338	guibg=#2a2b2f	gui=none
+hi Pmenu		guifg=#2a2b2f	guibg=#9ab2c8	gui=none
+hi PmenuSel		guifg=#2a2b2f	guibg=#62acce	gui=bold
+hi PmenuSbar	guifg=#2a2b2f	guibg=#2a2b2f	gui=none
+hi PmenuThumb	guifg=#2a2b2f	guibg=#62acce	gui=none
+hi PreProc		guifg=#e1e338	guibg=#2a2b2f	gui=none 
 hi Search		guifg=#2a2b2f	guibg=#e1e0e5	gui=none
 hi Special		guifg=#9ab2c8	guibg=#2a2b2f	gui=none
 hi Statement	guifg=#62acce	guibg=#2a2b2f	gui=none
@@ -47,6 +62,38 @@ hi Todo 		guifg=#e1e0e5	guibg=#9d0e15	gui=bold
 hi Type 		guifg=#e6ac32	guibg=#2a2b2f	gui=none
 hi Underlined	guifg=#e1e0e5	guibg=#2a2b2f	gui=underline
 hi Visual		guifg=#2a2b2f	guibg=#e1e0e5	gui=none
+hi Wildmenu		guifg=#62acce	guibg=#2a2b2f	gui=bold
+
+if !has("gui_running") && &t_Co == 256
+	hi Comment		ctermfg=239	ctermbg=235	cterm=none
+	hi Cursor 		ctermfg=235	ctermbg=254	cterm=none
+	hi Constant 	ctermfg=144	ctermbg=235	cterm=none
+	hi CursorLine		       	ctermbg=236	cterm=none
+	hi DiffAdd		ctermfg=235	ctermbg=74	cterm=none
+	hi DiffChange	ctermfg=235	ctermbg=144	cterm=none
+	hi DiffDelete	ctermfg=239	ctermbg=235	cterm=none
+	hi DiffText		ctermfg=124	ctermbg=144	cterm=none
+	hi Folded 		ctermfg=239	ctermbg=235	cterm=none
+	hi MatchParen	ctermfg=184	ctermbg=235	cterm=bold,underline
+	hi ModeMsg		ctermfg=254	ctermbg=235	cterm=bold
+	hi Normal 		ctermfg=254	ctermbg=235	cterm=none
+	hi Pmenu		ctermfg=235	ctermbg=74	cterm=none
+	hi PmenuSel		ctermfg=235	ctermbg=81	cterm=bold
+	hi PmenuSbar	ctermfg=235	ctermbg=235	cterm=none
+	hi PmenuThumb	ctermfg=235	ctermbg=81	cterm=none
+	hi PreProc		ctermfg=184	ctermbg=235	cterm=none 
+	hi Search		ctermfg=235	ctermbg=254	cterm=none
+	hi Special		ctermfg=74	ctermbg=235	cterm=none
+	hi Statement	ctermfg=81	ctermbg=235	cterm=none
+	hi StatusLine 	ctermfg=235	ctermbg=81	cterm=bold
+	hi StatusLineNC ctermfg=235	ctermbg=254	cterm=none
+	hi Todo 		ctermfg=254	ctermbg=124	cterm=bold
+	hi Type 		ctermfg=178	ctermbg=234	cterm=none
+	hi Underlined	ctermfg=254	ctermbg=234	cterm=underline
+	hi Visual		ctermfg=235	ctermbg=254	cterm=none
+	hi Wildmenu		ctermfg=81	ctermbg=234	cterm=bold
+endif
+
 hi! link Boolean		Constant
 hi! link Character		Constant
 hi! link Conditional	Statement
@@ -95,15 +142,25 @@ hi! link WarningMsg		Error
 
 " c++
 hi! link cppAccess		Type
+hi! link cppStatement	Special
 " html
 hi! link htmlArg		Statement
 hi! link htmlLink		Underlined
 hi! link htmlTagName	Type
+" java
+hi! link javaTypeDef	Special
 " pas
 hi! link pascalStatement	Type
+" py
+hi! link pythonStatement	Type
+" rb
+hi! link rubyConstant	Special
+hi! link rubyDefine		Type
 " sh
 hi! link shDerefVar		Special
 hi! link shFunction		Type
+hi! link shLoop			Statement
+hi! link shStatement	Special
 " sql
 hi! link sqlKeyword		Statement
 " vim
